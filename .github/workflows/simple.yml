@@ -1,14 +1,18 @@
-name: Shell Commands
+# name for our entire workflow
+name:
+  Shell Commands
 
-on:[push]
+  # Workflow can run multiple such as push, pull request (opened, merged), issue etc.
+on: [push]
 
-jobs: 
-  run-shell-command: 
+jobs:
+  run-shell-command:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: echo a string
         run: echo "Hello World"
       - name: multiline script
-        run: | # run muløtiple script 
+        # run multiple script
+        run: |
           node --version
           npm --version
