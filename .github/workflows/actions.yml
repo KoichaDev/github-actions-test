@@ -5,10 +5,10 @@ name: Action workflow
 # We can be much more specific with our github actions based on just "general pull_request"
 on:
   # push:
-  schedule:
-    # minutes, hours, day, day of a month, a month, day of the week
-    - cron: '0/5 * * * *'
-    - cron: '0/6 * * * *'
+  # schedule:
+  # minutes, hours, day, day of a month, a month, day of the week
+  # - cron: '0/5 * * * *'
+  # - cron: '0/6 * * * *'
   pull_request:
     types: [closed, assigned, opened, reopened]
 jobs:
