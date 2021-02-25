@@ -4,16 +4,32 @@ name: Action workflow
 
 # We can be much more specific with our github actions based on just "general pull_request"
 on:
+  # pull_request:
+  #   branches:
+  #     - 'main'
+  push:
+    branches:
+      - 'main'
+      - 'feature/*' # matches that starts with e.g. feature/develop-branch, match feature/feat/something-branch-nanme
+      - 'feature/**' # matches that starts with e.g. feature/feat/something-branch-nanme
+      - '!feature/ignore-this-branch' # This will ignore this branch
+    tags:
+      - v1.*.*
+    paths: # We would like to run only those workflow above when we change to JS file only. Nothing else works
+      - '**.js'
+      - '!bla-bla.js'
+    # paths-ignore:
+    #   - 'docs/**'
   # This is used to trigger manually by sending POST request to some URL
-  repository_dispatch:
-    types: [build]
+  # repository_dispatch:
+  #   types: [build]
   # push:
   # schedule:
   # minutes, hours, day, day of a month, a month, day of the week
   # - cron: '0/5 * * * *'
   # - cron: '0/6 * * * *'
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
