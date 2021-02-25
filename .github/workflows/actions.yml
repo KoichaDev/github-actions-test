@@ -1,0 +1,17 @@
+name: Action workflow
+
+on: [push]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple JavaScript Action
+        id: greet
+        # Takes reference to an action. In this case, it's from here: https://github.com/actions/hello-world-javascript-action
+        uses: actions/hello-world-javascript-action@v1.1
+        # 'with' means that you can provide input to an action. The input is based on the MD documentation on the github link provided above
+        with:
+          who-to-greet: John Doe
+      - name: Output the log of greeting time
+        run: echo ${{ steps.greet.outputs.time }}
